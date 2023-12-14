@@ -1,0 +1,57 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* getConcatenation(int* nums, int numsSize, int* returnSize) {
+    int *ans = malloc((2*numsSize)*sizeof(int));
+    *returnSize = 0;
+    for( int i = 0 ; i < numsSize ; i++)
+        ans[(*returnSize)++] = nums[i];
+    for( int i = 0 ; i < numsSize ; i++)
+        ans[(*returnSize)++] = nums[i]; 
+    return ans;  
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* getConcatenation(int* nums, int numsSize, int* returnSize){
+    int *ans = malloc(sizeof(int)*(2*numsSize));
+    for(int i = 0 ; i < numsSize ; i++)
+        ans[i] = ans[i+numsSize] = nums[i];
+    *returnSize = (2*numsSize);
+    return ans;
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* getConcatenation(int* nums, int numsSize, int* returnSize) {
+    *returnSize = numsSize;
+    nums = realloc(nums, 2 * numsSize * sizeof(int));
+    for(int i = 0; i < numsSize; i++)
+        nums[(*returnSize)++] = nums[i];
+    return nums;
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* getConcatenation(int* nums, int numsSize, int* returnSize){
+    int *ans = (int*)malloc(2*numsSize*sizeof(int));
+    *returnSize = numsSize*2;
+    for(int i = 0; i < numsSize*2; i++)
+        ans[i] = nums[i%numsSize];
+    return ans;
+}
